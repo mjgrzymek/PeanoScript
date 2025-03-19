@@ -1,0 +1,48 @@
+{
+  "name": "peanoscript",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "compile-grammar": "nearleyc app/src/language/parsing/grammar.ne -o app/src/language/parsing/grammar.ts; sed -i '1s/^/\\/\\* eslint-disable \\*\\/\\n\\/\\/ @ts-nocheck\\n\\n/' app/src/language/parsing/grammar.ts",
+    "compile-grammar-js": "nearleyc <(tail -n +2 app/src/language/parsing/grammar.ne) -o app/src/language/parsing/grammar.cjs",
+    "compile-lezer": "lezer-generator app/src/language/lezerHighlighting/my.grammar -o app/src/language/lezerHighlighting/lezerparser.ts; sed -i '1s/^/\\/\\* eslint-disable \\*\\/\\n\\/\\/ @ts-nocheck\\n\\n/' app/src/language/lezerHighlighting/lezerparser.ts",
+    "full-test": "bun run compile-grammar && bun run compile-lezer && bun test"
+  },
+  "dependencies": {
+    "@codemirror/commands": "^6.6.2",
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/language": "^6.10.3",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.36.3",
+    "@lezer/highlight": "^1.2.1",
+    "@lezer/lr": "^1.4.2",
+    "@types/moo": "^0.5.9",
+    "@types/nearley": "^2.11.5",
+    "codemirror": "^6.0.1",
+    "moo": "^0.5.2",
+    "nearley": "^2.20.1",
+    "next": "15.2.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@lezer/generator": "^1.7.2",
+    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "^2.1.8"
+  }
+}

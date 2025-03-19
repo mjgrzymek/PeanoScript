@@ -1,2 +1,1 @@
-# PeanoScript
-TypeScript-like theorem prover
+# PeanoScript: TypeScript-like theorem prover

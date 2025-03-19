@@ -1,0 +1,44 @@
+@top Program { expression* }  
+
+@skip { space | LineComment }
+
+expression {
+  Identifier  | Keyword | Number | Special | DoubleEquals | DoubleNotEquals | Arrow | Equals | SpecialFunc | Sorry
+}
+
+Keyword {
+  @specialize[@name="Keyword"]<Identifier, "for" 
+        | "const" | "return" | "continue" | "break" | "let" | "switch" | "match" | "extends" | "case" | "type" 
+         | "as" | "function">
+}
+
+Special {
+  @specialize[@name="Special"]<Identifier, "N" | "Prop" | "never" | "any">
+}
+
+SpecialFunc {
+  @specialize[@name="SpecialFunc"]<Identifier, "trans" | "map" | "symm" | "excludedMiddle" | "replace" | "ring" | "neverElim" >
+}
+
+Sorry {
+  @specialize[@name="Sorry"]<Identifier, "sorry">
+}
+
+Number {
+  Prenumber | @specialize[@name="Number"]<Identifier, "succ">
+}
+
+@tokens {
+
+  Identifier { std.asciiLetter (std.asciiLetter | std.digit)* }
+  Prenumber { $[0-9]+ }
+  LineComment { "//" ![\n]* }
+  DoubleEquals { "==" | "===" }
+  DoubleNotEquals { "!=" | "!==" }
+  Arrow { "=>"}
+  Equals { "=" }
+
+  space { $[ \t\n\r]+ }
+}
+
+//@detectDelim
