@@ -22,6 +22,7 @@
     "@lezer/lr": "^1.4.2",
     "@types/moo": "^0.5.9",
     "@types/nearley": "^2.11.5",
+    "@vercel/analytics": "^1.5.0",
     "codemirror": "^6.0.1",
     "moo": "^0.5.2",
     "nearley": "^2.20.1",
