@@ -43,6 +43,7 @@ export function CodeMirrorComponent(options: EditorOptions) {
       className={` border border-gray-700 flex w-full ${
         options.big ? "h-[80vh]" : "max-w-[110ch] max-h-[80vh]"
       } mx-auto my-4 text-xs lg:text-sm `}
+      spellCheck={false}
     >
       <div
         ref={editorRef}

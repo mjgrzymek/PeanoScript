@@ -462,7 +462,7 @@ const onePlusOneIsTwo: 1 + 1 == 2  =  leftSide.trans(rightSide);`}
         <h2 id="sorry">Apologizing to the compiler</h2>
         <p>
           Sometimes when we write a proof, we aren't sure how to complete a
-          given part. we can use <code>sorry</code> whenever we need some
+          given part. We can use <code>sorry</code> whenever we need some
           proposition, and it will be accepted by the compiler.{" "}
           <code>sorry</code> is like a variable of type <code>any</code> in
           TypeScript, which can be implicitly converted into any other type.
