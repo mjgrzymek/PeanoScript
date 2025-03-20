@@ -125,22 +125,22 @@ function renderSidePanel({
   returnMethod,
 }: sidePanelArgs) {
   return (
-    <div className=" font-mono text-pretty overflow-y-auto bg-gray-200 l p-2 h-full text-sm">
+    <div className="l h-full overflow-y-auto bg-gray-200 p-2 font-mono text-sm text-pretty">
       {globalError ? (
         <>
-          <p className="text-red-600 text-lg font-bold">
+          <p className="text-lg font-bold text-red-600">
             {globalError.headline}
           </p>
           <p className="text-red-600">{globalError.description}</p>
         </>
       ) : null}
-      <p className="font-bold mt-2">Defined Variables:</p>
+      <p className="mt-2 font-bold">Defined Variables:</p>
       {variablesAtCursor.length > 0 ? (
         <ul>
           {variablesAtCursor.map((variable, index) => (
             <li
               key={index}
-              className={variable.shadowed ? "line-through text-gray-600" : ""}
+              className={variable.shadowed ? "text-gray-600 line-through" : ""}
             >
               <span className="font-bold">{variable.varName}</span>:{" "}
               {variable.varType}
@@ -150,7 +150,7 @@ function renderSidePanel({
       ) : (
         <p>None</p>
       )}
-      <p className="font-bold mt-2">Expected {returnMethod ?? "return"}:</p>
+      <p className="mt-2 font-bold">Expected {returnMethod ?? "return"}:</p>
       <p>{expectedReturn ?? "Any"}</p>
     </div>
   );
@@ -173,6 +173,15 @@ function simplifyError(err: Error): string | undefined {
   return `Syntax error at line ${line}, column ${col}`;
 }
 
+const disableGrammarlyPlugin = ViewPlugin.fromClass(
+  class {
+    constructor(view: EditorView) {
+      const editor = view.contentDOM;
+      editor.setAttribute("data-gramm", "false");
+    }
+  },
+);
+
 export const PeanoScriptExtension = (options: EditorOptions) => {
   let interpreterKillSwitch: InterpreterKillSwitch = { kill: false }; // SUS?
 
@@ -184,7 +193,7 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
         code,
         options.compilerOptions,
         options.exercise,
-        interpreterKillSwitch
+        interpreterKillSwitch,
       );
     } catch (e) {
       if (!(e instanceof Error)) {
@@ -341,7 +350,7 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
         }
         this.dom.remove();
       }
-    }
+    },
   );
 
   const consoleLogPlugin = ViewPlugin.fromClass(
@@ -379,7 +388,7 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
       decorations: (v) => v.decorations,
 
       eventHandlers: {},
-    }
+    },
   );
 
   const typeInfoField = StateField.define<TypeInfo>({
@@ -422,11 +431,11 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
         if (options.saveAs && update.docChanged) {
           localStorage.setItem(
             savifyName(options.saveAs),
-            update.view.state.doc.toString()
+            update.view.state.doc.toString(),
           );
         }
       }
-    }
+    },
   );
 
   const myLinter = linter(
@@ -461,17 +470,17 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
 
       return diagnostics;
     },
-    { delay: 1 }
+    { delay: 1 },
   );
 
   function createExercisePanel(
     view: EditorView,
     initialCode: string,
-    solutionCode: string
+    solutionCode: string,
   ): Panel {
     const dom = document.createElement("div");
     dom.className = (
-      <div className="p-2 border-t border-gray-300 flex items-center justify-between" />
+      <div className="flex items-center justify-between border-t border-gray-300 p-2" />
     ).props.className;
 
     // Create status message element
@@ -492,7 +501,7 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
     const resetButton = document.createElement("button");
     resetButton.textContent = "Reset";
     resetButton.className = (
-      <div className="px-3 py-1 bg-gray-200 rounded-sm hover:bg-gray-300 text-gray-800" />
+      <div className="rounded-sm bg-gray-200 px-3 py-1 text-gray-800 hover:bg-gray-300" />
     ).props.className;
     resetButton.onclick = () => {
       view.dispatch({
@@ -504,7 +513,7 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
     const solutionButton = document.createElement("button");
     solutionButton.textContent = "Solution";
     solutionButton.className = (
-      <div className="px-3 py-1 bg-blue-600 rounded-sm hover:bg-blue-700 text-white" />
+      <div className="rounded-sm bg-blue-600 px-3 py-1 text-white hover:bg-blue-700" />
     ).props.className;
     solutionButton.onclick = () => {
       view.dispatch({
@@ -573,7 +582,7 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
   // Create the exercise panel extension
   function exercisePanel(initialCode: string, solutionCode: string) {
     return showPanel.of((view) =>
-      createExercisePanel(view, initialCode, solutionCode)
+      createExercisePanel(view, initialCode, solutionCode),
     );
   }
 
@@ -587,6 +596,7 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
     consoleLogPlugin,
     keymap.of([indentWithTab]),
     EXAMPLE(),
+    disableGrammarlyPlugin,
   ];
 
   if (options.saveAs) {
