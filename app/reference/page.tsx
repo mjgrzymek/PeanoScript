@@ -3,7 +3,7 @@ import { CodeMirrorComponent } from "../src/codemirrorStuff/CodeMirrorComponent"
 
 export default function Reference() {
   return (
-    <div className="prose mx-auto  prose-a:text-blue-700 prose-a:visited:text-purple-900 ">
+    <div className="prose prose-a:text-blue-700 prose-a:visited:text-purple-900 mx-auto">
       <h1>PeanoScript reference</h1>
       <p>
         This is a reference page/cheat sheet for PeanoScript, the
@@ -359,9 +359,8 @@ const example: MyGenericType<7, 0 == 0> = eqRefl(7) && eqRefl(0);`}
         <li>
           For <code>eq: A == B</code>, <code>ring(eq)</code> has type{" "}
           <code>{`rung<A == B>`}</code>. This type can be converted to{" "}
-          <code>C == D</code>
-          if <code>A - B</code> equals <code>C - D</code> or <code>D - C</code>,
-          considering them as polynomials.
+          <code>C == D</code> if <code>A - B</code> equals <code>C - D</code> or{" "}
+          <code>D - C</code>, considering them as polynomials.
         </li>
         <li>
           For <code>prop: T</code> and <code>eq: x == B</code> where{" "}

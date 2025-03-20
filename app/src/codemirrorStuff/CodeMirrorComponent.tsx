@@ -40,14 +40,13 @@ export function CodeMirrorComponent(options: EditorOptions) {
 
   return (
     <div
-      className={` border border-gray-700 flex w-full ${
-        options.big ? "h-[80vh]" : "max-w-[110ch] max-h-[80vh]"
-      } mx-auto my-4 text-xs lg:text-sm `}
-      spellCheck={false}
+      className={`flex w-full border border-gray-700 ${
+        options.big ? "h-[80vh]" : "max-h-[80vh] max-w-[110ch]"
+      } mx-auto my-4 text-xs lg:text-sm`}
     >
       <div
         ref={editorRef}
-        className={`  ${options.readOnly ? "" : "w-3/4"}  overflow-auto`}
+        className={` ${options.readOnly ? "" : "w-3/4"} overflow-auto`}
       ></div>
       {/*panel goes here*/}
     </div>

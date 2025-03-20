@@ -17,7 +17,7 @@ Special {
 }
 
 SpecialFunc {
-  @specialize[@name="SpecialFunc"]<Identifier, "trans" | "map" | "symm" | "excludedMiddle" | "replace" | "ring" | "neverElim" >
+  @specialize[@name="SpecialFunc"]<Identifier, "trans" | "map" | "symm" | "excludedMiddle" | "replace" | "ring" | "neverElim" | "replaceAll">
 }
 
 Sorry {

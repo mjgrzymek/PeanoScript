@@ -552,10 +552,10 @@ const unarySeven: string = toUnary(seven);} />
           function. The fact that a function can be used to obtain a given
           result type is trivial, since all types have instances: for example,
           we can obtain a string with <code>"abc"</code>. In PeanoScript, a type
-          like <code>0 == 1</code>
-          represents a false proposition, and therefore can't be instantiated
-          (without using <code>sorry</code>). That makes it interesting to
-          explore the implications, that is functions, between types.
+          like <code>0 == 1</code> represents a false proposition, and therefore
+          can't be instantiated (without using <code>sorry</code>). That makes
+          it interesting to explore the implications, that is functions, between
+          types.
         </p>
         {/*maybe example with hash set and order set*/}
         <p>
@@ -664,7 +664,7 @@ const twoIsTwo: 2 == 2 = inj(eqRefl(3));`}
         <p>
           PeanoScript uses currying, a technique where multi-argument functions
           are represented as chained single-argument functions. For example,
-          instead of <code>{`(x, y) => ...`}</code> we may have{" "}
+          instead of <code>{`(x, y) => ...`}</code>, we may have{" "}
           <code>{`x => y => ...`}</code>. This is occasionally convenient
           because we can make use of a partially applied function:
         </p>
@@ -786,7 +786,7 @@ function simplify(n: N, m: N, eq: n + 2 == m + 1): m == n + 1 {
 }
 
 // replaceAll also works on more complex types
-function replaceExample2(n: N, m: N, f: (_: m == n*2) => m == 0, eq: m == n)
+function replace2(n: N, m: N, f: (_: m == n*2) => m == 0, eq: m == n)
   : (_ : n == n*2) => n == 0
 {
   const fReplaced = replaceAll(f, eq);
@@ -969,8 +969,7 @@ function addComm(a: N, b: N): a + b == b + a {
         <p>
           To be precise, given a variable <code>eq</code> of type{" "}
           <code>A == B</code>, <code>ring(eq)</code> will be accepted as type{" "}
-          <code>C == D</code>
-          if A-B = C-D or A-B = D-C as polynomials.
+          <code>C == D</code> if A-B = C-D or A-B = D-C as polynomials.
         </p>
         <p>
           When the sides of an equation cancel out, we can use{" "}
@@ -1028,7 +1027,7 @@ function badEq2(a: N,
         </p>
       </Prosify>
       <CodeMirrorComponent
-        initialDoc={`function asExample(n: N, m: N, k:N, eq1: n == m + 1, eq2: 2 + m == k + 3)
+        initialDoc={`function example(n: N, m: N, k:N, eq1: n == m + 1, eq2: 2 + m == k + 3)
   : n == k + 2
 {
   return eq1.trans(ring(eq2) as m + 1 == k + 2);
@@ -1049,7 +1048,7 @@ function badEq2(a: N,
           solution: `function asExercise(n: N, m: N, eq1: n + m == m*2 + 3, eq2: m+3 == 7)
   : n == 7
 {
-  return (ring(eq1) as n == m +3).trans(eq2);
+  return (ring(eq1) as n == m+3).trans(eq2);
 }`,
           varName: "asExercise",
           varType: string2Type(
@@ -1781,16 +1780,16 @@ const implication: implies<0 == 0, 1 == 1>
         <p>
           Formulas allow us to use the deepest and most fundamental law of
           equality. While <code>replaceAll</code> lets us replace all
-          occurrences of a variable with something else, it might be that we
-          want to replace only some occurrences, or that we want to replace
-          something that is not a variable (like n*n+7). Mathematically, if we
-          have a formula φ, and A = B for arithmetic expressions A and B, if
-          φ(A) then φ(B).
+          occurrences of a variable with something else, we might want to
+          replace only some occurrences, or replace something that is not a
+          variable (like n*n+7). Mathematically, if we have a formula φ, and A =
+          B for arithmetic expressions A and B, and φ(A) is true, then φ(B) is
+          true.
         </p>
         <p>
           To use this principle, we can define a formula Phi using a generic
-          type <code>{`type Phi<n extends N> = ...`}</code> and then write{" "}
-          {`replace<Phi>`} to get a term of the type
+          type <code>{`type Phi<n extends N> = ...;`}</code> and then write{" "}
+          <code>{`replace<Phi>`}</code> to get a value of the type
           <code>{`(L: N, R: N, eqLR: L == R, propOfL: Phi<L>) => Phi<R>`}</code>
           .
         </p>
@@ -1882,8 +1881,10 @@ console.log(test);`}
       <Prosify>
         For most common properties involving the natural numbers, such as parity
         or primarity, we can prove that they are decidable for all n, e.g.{" "}
-        <code>{`(n: N) => isPrime<n> || !isPrime<n>`}</code>. We can start with
-        a simple one: for any a and b, they're either equal or not.
+        <code>{`(n: N) => isPrime<n> || !isPrime<n>`}</code>. This basically
+        means writing a type-safe algorithm that will return one of the options.
+        We can start with a simple one: for any a and b, they're either equal or
+        not.
       </Prosify>
       <CodeMirrorComponent
         initialDoc={`function zeroOrNot(x: N): 0 == x || 0 != x {
