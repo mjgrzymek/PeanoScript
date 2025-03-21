@@ -68,7 +68,7 @@ export default function Sidebar({ initSections }: { initSections: Section[] }) {
 
   return (
     <nav className="hidden w-64 pr-8 md:block">
-      <div className="sticky top-10">
+      <div className="sticky top-10 max-h-screen overflow-y-auto">
         <h3 className="mb-4 text-lg font-semibold">Tutorial Sections</h3>
         <ul className="space-y-1">
           {sections.map((section) => (
