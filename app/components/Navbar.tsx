@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NavButtons } from "./NavButtons";
-import StarNumber from "./StarsNumber";
+import StarsNumber from "./StarsNumber";
 
 export default function Navbar() {
   return (
@@ -37,7 +37,7 @@ export default function Navbar() {
                 />
                 <span className="ml-1 font-medium">GitHub</span>
               </a>
-              <StarNumber />
+              <StarsNumber />
             </div>
           </div>
         </div>

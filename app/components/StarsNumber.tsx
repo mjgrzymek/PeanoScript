@@ -1,4 +1,4 @@
-export default async function StarNumber() {
+export default async function StarsNumber() {
   let stars_count = 30;
   try {
     const repo = "mjgrzymek/PeanoScript";
