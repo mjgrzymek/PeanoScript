@@ -573,7 +573,7 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
           // Normal "not solved yet" state
           statusEl.textContent = "Remove the sorry to solve";
           statusEl.className = (
-            <div className="font-medium text-gray-500" />
+            <div className="font-medium text-gray-700" />
           ).props.className;
         }
       },
