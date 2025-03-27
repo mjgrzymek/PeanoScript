@@ -8,6 +8,8 @@ export default async function StarsNumber() {
     if (typeof stargazers_count === "number") {
       stars_count = stargazers_count;
     }
-  } catch {}
+  } catch {
+    console.error("Failed to fetch stars count");
+  }
   return `⭐ ${stars_count} stars`;
 }
