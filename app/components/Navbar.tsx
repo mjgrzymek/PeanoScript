@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NavButtons } from "./NavButtons";
+import StarNumber from "./StarsNumber";
 
 export default function Navbar() {
   return (
     <nav className="bg-white shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-28 justify-between sm:h-16">
-          <div className="flex w-full justify-between">
+        <div className="flex h-28 justify-between sm:h-20">
+          <div className="flex w-full items-center justify-between">
             <div className="flex flex-shrink-0 items-center">
               <Link href="/" className="flex items-center">
                 <Image
@@ -20,7 +21,7 @@ export default function Navbar() {
               </Link>
             </div>
             <NavButtons />
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-col items-center space-x-3">
               <a
                 href="https://github.com/mjgrzymek/PeanoScript"
                 target="_blank"
@@ -36,7 +37,8 @@ export default function Navbar() {
                 />
                 <span className="ml-1 font-medium">GitHub</span>
               </a>
-            </div>{" "}
+              <StarNumber />
+            </div>
           </div>
         </div>
       </div>
