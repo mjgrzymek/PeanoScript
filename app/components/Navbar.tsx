@@ -21,7 +21,7 @@ export default function Navbar() {
               </Link>
             </div>
             <NavButtons />
-            <div className="flex flex-col items-center space-x-3">
+            <div className="flex flex-col items-center gap-1 space-x-3">
               <a
                 href="https://github.com/mjgrzymek/PeanoScript"
                 target="_blank"
