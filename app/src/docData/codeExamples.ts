@@ -15,6 +15,7 @@ export type EditorOptions = {
   saveAs?: string;
   big?: boolean;
   readOnly?: boolean;
+  hideLineNumbers?: boolean;
 };
 
 export const docExamples = {

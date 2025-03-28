@@ -40,7 +40,7 @@ export function CodeMirrorComponent(options: EditorOptions) {
 
   return (
     <div
-      className={`flex w-full border border-gray-700 ${
+      className={`not-prose flex w-full border border-gray-700 ${
         options.big ? "h-[80vh]" : "max-h-[80vh] max-w-[110ch]"
       } mx-auto my-4 text-xs lg:text-sm`}
     >

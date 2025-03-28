@@ -3,7 +3,7 @@ import { CodeMirrorComponent } from "../src/codemirrorStuff/CodeMirrorComponent"
 
 export default function Reference() {
   return (
-    <div className="prose prose-a:text-blue-700 prose-a:visited:text-purple-900 mx-auto">
+    <div className="prose prose-a:text-blue-700 prose-a:visited:text-purple-900 mx-auto px-3">
       <h1>PeanoScript reference</h1>
       <p>
         This is a reference page/cheat sheet for PeanoScript, the

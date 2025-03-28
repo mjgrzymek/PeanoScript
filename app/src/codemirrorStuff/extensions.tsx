@@ -13,6 +13,7 @@ import {
   showPanel,
   highlightActiveLineGutter,
   highlightActiveLine,
+  lineNumbers,
 } from "@codemirror/view";
 import { EXAMPLE } from "../language/lezerHighlighting";
 
@@ -615,6 +616,10 @@ export const PeanoScriptExtension = (options: EditorOptions) => {
     ret.push(highlightActiveLineGutter());
     ret.push(highlightActiveLine());
     ret.push(lintGutter());
+  }
+
+  if (!options.hideLineNumbers) {
+    ret.push(lineNumbers());
   }
 
   return ret;

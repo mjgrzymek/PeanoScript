@@ -15,7 +15,7 @@ export function NavButtons() {
   };
 
   return (
-    <div className="mx-1 flex flex-col justify-between py-1 text-lg sm:flex-row sm:space-x-8">
+    <div className="mx-1 flex flex-col justify-between py-1 sm:flex-row sm:space-x-4 md:text-lg lg:space-x-8 lg:text-xl">
       <Link
         href="/tutorial"
         className={`inline-flex items-center border-b-2 px-1 pt-1 font-medium ${isActive(

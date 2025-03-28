@@ -11,5 +11,5 @@ export default async function StarsNumber() {
   } catch {
     console.error("Failed to fetch stars count");
   }
-  return `⭐ ${stars_count} stars`;
+  return <div>⭐ {stars_count} stars</div>;
 }

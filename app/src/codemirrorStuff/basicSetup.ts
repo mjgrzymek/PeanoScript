@@ -97,7 +97,7 @@ export const basicSetup: Extension = (() => [
 ])();
 
 export const basicSetupSimple: Extension = (() => [
-  lineNumbers(),
+  //lineNumbers(),
   //highlightActiveLineGutter(),
   highlightSpecialChars(),
   history(),

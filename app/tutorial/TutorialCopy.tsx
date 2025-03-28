@@ -273,7 +273,7 @@ function ForExplanation() {
 
 function Stuff() {
   return (
-    <div className="pt-10 pb-64">
+    <div className="pb-64">
       <Prosify>
         {/* intro */}
         <h1> PeanoScript tutorial</h1>
