@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PeanoScript: TypeScript but it's a theorem prover",
+  title: "PeanoScript language: TypeScript, but it's a theorem prover",
   description:
     "A proof assistant for Peano Arithmetic with TypeScript-inspired syntax",
 };
