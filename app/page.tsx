@@ -52,7 +52,7 @@ export default function Home() {
     match(parity){
       case {left: even}:
         continue {k: k, parity: {right: ring(even)}};
-      case{right: odd}:
+      case {right: odd}:
         continue {k: k+1, parity: {left: ring(odd)}};
     }
   };  

@@ -2112,7 +2112,7 @@ function AMGMinequality(x: N, y: N): lessEq<x*y*4, (x+y)*(x+y)>{
     </div>
   );
 }
-// ask on stack exchange about FOL vs Dependent. can for all work like that
+
 function App() {
   return (
     <>
